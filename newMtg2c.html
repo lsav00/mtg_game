@@ -1,0 +1,125 @@
+
+<html>
+<body>
+<!--RELOAD ALERT-->      
+<script>
+window.addEventListener("beforeunload", function(event) { event.returnValue = "Your custom message."; });
+</script>
+
+
+
+<!--IXL ANCHOR-->
+<a href="https://scryfall.com/sets/xln?as=grid/" target="_blank">ixalan</a>
+
+
+
+<!--CARD SELECTED-->
+<h1>Your Selection</h1>
+
+
+
+<h1>Your Deck</h1>
+<!--SHUFFLE DECK BUTTON -->
+<div id="drawButton"></div>
+<input type="button" id="button4" value="Shuffle Deck" onclick="shuffle_array();"></input>
+
+<script>
+//DISPLAY THE SHUFFLED DECK ARRAY
+function shuffle_array()
+{
+alert("Player 1 wants to shuffle Player 1's deck");
+array.sort(() => Math.random() - 0.5);
+var e = "<hr/>";   
+   //PRINTS THE CARD IMAGE OF THE INDEX
+   for (var y=0; y<array.length; y++)
+   {
+	e += "<img src='https://img.scryfall.com/cards/large/en/xln/" + array[y] + ".jpg' width='100' height='150'>";
+   }
+	document.getElementById("myDeck").innerHTML = e;
+	//DISPLAY THE DRAW CARD BUTTON
+	document.getElementById("drawButton").innerHTML = "<input type='button' id='button3' value='Draw' onclick='drawCard();'></input>";
+}
+</script>
+
+<script>
+var x1 = 0; //x seems like a it's gonna be the index number
+var array1 = Array(); //seems like creating an array object here
+function drawCard() //start of function to add-to-array
+{
+
+ array1[x1] = array[0]; //the index (x) is being assigned a value here
+ x1++; //increment x  
+ var e = "<hr/>";
+ for (var y=0; y<array1.length; y++)
+   {
+	e += "<img src='https://img.scryfall.com/cards/large/en/xln/" + array1[y] + ".jpg' width='100' height='150'>";
+   }
+   document.getElementById("MyReveal").innerHTML = e;
+
+//SHIFT THE ARRAY ---> works well
+array.shift();
+//PRINT THE NEW ARRAY ---> works well
+var e = "";
+for (var y=0; y<array.length; y++)
+{
+e += "<img src='https://img.scryfall.com/cards/large/en/xln/" + array[y] + ".jpg' width='100' height='150'>";
+document.getElementById("myDeck").innerHTML = e;
+}
+}
+</script>
+
+
+<div id="myDeck"></div> 
+
+<h1>Your Hand</h1>
+<div id="MyReveal"></div> 
+
+
+
+
+
+<div  id="handDisplay"></div>
+<div id="myDraw"></div> 
+<div id="MyHand"></div> 
+<div id="MyHand1"></div> 
+
+
+
+
+<h1>Your Collection</h1>
+
+<input type="number" id="text1" name="quantity" min="1" max="200"></input>
+
+
+<input type="button" id="button1" value="Add" onclick="add_element_to_array();"></input>
+
+<div id="Result"></div> 
+
+<script>
+
+//the array
+var x = 0; //x seems like a it's gonna be the index number
+var array = Array(); //seems like creating an array object here
+function add_element_to_array() //start of function to add-to-array
+{
+
+ array[x] = document.getElementById("text1").value; //the index (x) is being assigned a value here
+ //alert("Element: " + array[x] + " Added at index " + x); //alert
+ x++; //increment x 
+ document.getElementById("text1").value = ""; 
+ var e = "<hr/>";
+ for (var y=0; y<array.length; y++)
+   {
+	e += "<img src='https://img.scryfall.com/cards/large/en/xln/" + array[y] + ".jpg' width='100' height='150'>";
+   }
+   document.getElementById("Result").innerHTML = e;
+}
+
+
+
+</script>
+
+</body>
+</html>
+
+
