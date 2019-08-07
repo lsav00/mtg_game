@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Build Deck</title>
+<script type="text/javascript" src="welcomeblack1.json"></script>
+<!--<script type="text/javascript" src="mydata3.js"></script>-->
+</head>
+<body onload="load()">
+<h1>Choose deck:</h1>
+
+<button onclick="showWelcomeBlack()">Welcome Black</button><br>
+<script>
+function showWelcomeBlack() {document.getElementById("preDeckDisplay").innerHTML = "Deck: <textarea id='something' rows='4' cols='50'>1 Bogstomper 1 Diregraf Ghoul 1 Grasping Scoundrel 1 Gravedigger 1 Gravewaker 1 Skeleton Archer 1 Skymarch Bloodletter 1 Tattered Mummy 1 Vampire Sovereign 2 Walking Corpse 1 Lich's Caress 1 Sovereign's Bite 1 Murder 2 Strangling Spores 1 Infernal Scarring 13 Swamp</textarea>"}
+</script>
+
+
+<div id ="preDeckDisplay"></div>
+<button onclick="clearPreDeckDisplay()">Clear</button><br><br>
+<script>function clearPreDeckDisplay() {document.getElementById("preDeckDisplay").innerHTML=""} </script>
+
+<!--REGEX QUANTITIES AND NAMES from predeck display-->
+<button onclick="quantify()">Show Quantities</button>
+<script>
+function quantify(){
+var predeck = document.getElementById("something").value; //get all of predeck display
+var nameNumPatt = /\d{1,2}\s\w+?\s?\D+/g; //provide the regex pattern
+var nameNumResult = predeck.match(nameNumPatt);
+//print the results
+var e = "";
+for (var i = 0; i < nameNumResult.length; i++){
+//get the number for each result
+var numPatt= /\d{1,2}/i;
+var numResult = nameNumResult[i];
+var numResult1 = numResult.match(numPatt);
+//get the name for each result
+var namePatt= /\D+/g;
+var nameResult= nameNumResult[i];
+//var nameResult1 = nameResult.slice(2, nameResult.length);
+var nameResult1 = nameResult.match(namePatt);
+e += nameResult1 + "<input type='number' id='" + nameResult1 + "' value= '" + numResult1 + "'><br>";
+}
+document.getElementById("qtysDisplay").innerHTML = e;
+//document.getElementById("qtysTestDisplay").innerHTML = "hi";
+}
+</script>
+<div id="qtysDisplay"></div>
+<div id="qtysTestDisplay"></div><!--to test the quantify function-->
+
+<!--SHOW CARDS-->
+<button onclick="showDeck()">Show Deck</button>
+<script>
+function showDeck(){
+var myqty= document.getElementById("Swamp").value;
+//for (var i = 0; i < myqty; i++){
+//document.getElementById("displayDeck").innerHTML = myqty;
+document.getElementById("displayDeckTest").innerHTML = "hi";
+//}
+}
+</script>
+<div id="displayDeck"></div> 
+<div id="displayDeckTest"></div> 
+
+<!--ORIGINAL DISPLAY DECK-->
+<script>
+function load() {
+var data2=data1.mainBoard;
+var e = "";
+for (var i = 0; i < data2.length; i++) {
+e += data2[i].name + " (" + data2[i].multiverseId + ")<input type='number' id='" + data2[i].multiverseId + "' value='1'><br>" ;
+}
+document.getElementById("display").innerHTML = e;
+}
+</script>
+
+<h1>Header</h1>
+<div id="display"></div>
+
+
+<!--UPDATE-->
+<!--UPDATE-->
+<!--UPDATE-->
+<button onclick="loadImages()">Update</button>
+<script>function loadImages() {
+var qty=document.getElementById('447406').value;
+document.getElementById('qtyDisplay').innerHTML = qty;
+
+var data2=data1.mainBoard;
+var e = "";
+for (var i = 0; i < qty; i++) {
+e += "<img src='" + "447406" + ".jpg'>" 
+}
+document.getElementById("deckDisplay").innerHTML = e;
+}
+</script>
+<div id="deckDisplay">Help</div>
+<div id="qtyDisplay">Quantity</div>
+</body>
+</html>
