@@ -1,0 +1,308 @@
+
+<html>
+<head>
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+
+</head>
+<body>
+<!--RELOAD ALERT-->      
+<script>
+//window.addEventListener("beforeunload", function(event) { event.returnValue = "Your custom message."; });
+</script>
+
+<h1>Battlefield</h1>
+
+<div id="myBattleground"></div>
+
+<h2>Lands</h2>
+<div id="lands"></div>
+<div id="testBattlefield"></div>
+
+<!--
+<button onclick="clearScreen();">Clear</button><script>function clearScreen() { document.getElementById("selectedDisplay").innerHTML = ""; } </script>
+<button onclick="play();">Play</button><script>
+function clearScreen() { document.getElementById("selectedDisplay").innerHTML = ""; } 
+function clearScreen() { document.getElementById("selectedDisplay").innerHTML = ""; } 
+</script>-->
+<!--
+<div id="selectedDisplay"></div>
+-->
+
+<!--
+<br><br><br>
+<input type="image" id="447200" alt="447200" width='100' height='150' src="447200.jpg" onclick="show447200();">
+<script>function show447200(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447200.jpg'>";}</script>
+
+<input type="image" id="447200" alt="447200" width='100' height='150' src="447200.jpg" onclick="show447200();">
+
+<input type="image" id="447200" alt="447200" width='100' height='150' src="447200.jpg" onclick="show447200();">
+
+<input type="image" id="447200" alt="447200" width='100' height='150' src="447200.jpg" onclick="show447200();">
+
+<input type="image" id="447191" alt="447191" width='100' height='150' src="447191.jpg" onclick="show447191();">
+<script>function show447191(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447191.jpg'>"; } </script>
+<input type="image" id="447191" alt="447191" width='100' height='150' src="447191.jpg" onclick="show447191();">
+
+<input type="image" id="447191" alt="447191" width='100' height='150' src="447191.jpg" onclick="show447191();">
+
+
+<input type="image" id="447191" alt="447191" width='100' height='150' src="447191.jpg" onclick="show447191();">
+<script>function show447191(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447191.jpg'>"; } </script>
+
+<input type="image" id="447250" alt="447250" width='100' height='150' src="447250.jpg" onclick="show447250();"><script>function show447250(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447250.jpg'>"; } </script>
+-->
+
+<!--Vampire Sovereign
+<input type="image" id="447261" alt="447261" width='100' height='150' src="447261.jpg" onclick="show447250();">
+<script>function show447261(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447261.jpg'>"; } </script>
+
+<--Vampire Sovereign
+<input type="image" id="447261" alt="447261" width='100' height='150' src="447261.jpg" onclick="show447250();">
+<script>function show447261(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447261.jpg'>"; } </script>
+
+<!--Horizon Scholar
+<input type="image" id="447195" alt="447195" width='100' height='150' src="447195.jpg" onclick="show447195();">
+<script>function show447195(){ document.getElementById("selectedDisplay").innerHTML = "<img src='447195.jpg'>"; } </script>
+
+
+<!--Horizon Scholar
+<input type="image" id="RiddlemasterSphinx" alt="RiddlemasterSphinx" width='100' height='150' src="RiddlemasterSphinx.jpg" onclick="showRiddlemasterSphinx();">
+<script>function showRiddlemasterSphinx(){ document.getElementById("selectedDisplay").innerHTML = "<img src='RiddlemasterSphinx.jpg'>"; } </script>
+
+
+
+<div id="planesWalkers">
+<h1>Planeswalkers<h1>
+<img src='447139.jpg' width='100' height='150'>
+<img src='447242.jpg' width='100' height='150'>
+<img src='447290.jpg' width='100' height='150'>
+<img src='447344.jpg' width='100' height='150'>
+<img src='447355.jpg' width='100' height='150'>
+</div>
+
+<br>
+
+<!--IXL ANCHOR
+<a href="https://scryfall.com/sets/xln?as=grid/" target="_blank">ixalan</a>
+
+
+
+<!--CARD SELECTED-->
+<!--
+<h1>Your Selection</h1>
+
+<div id="selectedDisplay">No card selected</div>
+-->
+
+<h1>Your Hand - Black2019 WelcomeDeck</h1>
+<div id="MyReveal">No cards in hand</div> 
+<script>
+var x = 0;
+</script>
+
+
+
+
+
+
+<h1>Your Library</h1>
+<!--SHUFFLE DECK BUTTON -->
+<div id="drawButton"></div>
+<input type="button" id="button4" value="Shuffle Deck" onclick="shuffle_array();"></input>
+
+<script>
+//DISPLAY THE SHUFFLED DECK ARRAY
+function shuffle_array()
+{
+//alert("Player 1 wants to shuffle Player 1's deck");
+array.sort(() => Math.random() - 0.5);
+var e = "<hr/>";   
+   //PRINTS THE CARD IMAGE OF THE INDEX INTO THE SHUFFLED ARRAY
+   for (var y=0; y<array.length; y++)
+   {
+	e += "<img src='" + array[y] + ".jpg' width='100' height='150'>";
+   }
+	document.getElementById("myDeck").innerHTML = e;
+	//DISPLAY THE DRAW CARD BUTTON
+	document.getElementById("drawButton").innerHTML = "<div id='jump'><input type='button' id='button3' value='Draw' onclick='drawCard();'></input><div>";
+}
+</script>
+<div id="test">Test</div>
+
+<!--THE DRAW CARD FUNCTION-->
+<!--THE DRAW CARD FUNCTION-->
+<script>
+var x1 = 0; //x seems like a it's gonna be the index number
+var array1 = Array(); //seems like creating an array object here
+function drawCard() //start of function to add-to-array
+{
+
+ array1[x1] = array[0]; //the index (x) is being assigned a value here
+ x1++; //increment x  
+ var e = "<hr/>";
+ for (var y=0; y<array1.length; y++)
+   {
+	//The showCard button
+	e += "<input type='image' id='" + array1[y] + "' width='200' height='275' src='" + array1[y]+ ".jpg'><button onclick='showCard(" + array1[y] + ")'>^</button> ";
+	
+   }
+   document.getElementById("MyReveal").innerHTML = e;
+
+//SHIFT THE ARRAY ---> works well
+array.shift();
+//PRINT THE NEW ARRAY ---> works well
+var e = "";
+for (var y=0; y<array.length; y++)
+{
+e += "<img src='" + array[y] + ".jpg' width='100' height='150'>";
+document.getElementById("myDeck").innerHTML = e;
+}
+
+if (array === undefined || array.length == 0) {
+    // array empty or does not exist
+	document.getElementById("myDeck").innerHTML ="";
+	document.getElementById("jump").innerHTML ="No cards in library";
+}
+} //end of drawCard function
+
+
+//SHOW CARD FUNCTION
+//SHOW CARD FUNCTION
+var x2 = 0; //x2 is the index number for the battlefieldArray
+var array2 = Array(); //create array2 for the battlefieldArray
+ 
+function showCard(scard)
+{
+var a = array1.indexOf(scard);
+document.getElementById("test").innerHTML = a;
+ //adds selected card to the battlefield
+ array2[x2] = scard; //the index (x) is being assigned the selected card value
+ x2++; //increment x  
+var e = "<hr/>"; //prep the printing of the cards
+ for (var y2=0; y2<array2.length; y2++) //create line for each card in the battlefield-array
+   {
+	e += "<input type='image' id='" + array2[y2] + "' width='100' height='150' src='" + array2[y2]+ ".jpg'>";
+	document.getElementById("myBattleground").innerHTML = e;
+   }
+     
+	// if (scard == 447406) {
+	// document.getElementById("lands").innerHTML = e;
+	
+	 //} else {
+  //document.getElementById("myBattleground").innerHTML = e; //print line to battlefield-array
+//}
+ document.getElementById("testBattlefield").innerHTML = scard;
+
+//Remove the "showed=card" from the hand-array
+var remove = array1.splice(a,1);
+
+x1--; //decrements the hand array index pointer to reflect a card has been removed from the hand
+//PRINT THE NEW HAND ARRAY ---> without the showed-card
+var e = "";
+for (var y3=0; y3<array1.length; y3++)
+{
+ 
+ e += "<input type='image' id='" + array1[y3] + "' width='200' height='275' src='" + array1[y3]+ ".jpg'><button onclick='showCard(" + array1[y3] + ")'>^</button>";
+ 
+
+}
+
+document.getElementById("MyReveal").innerHTML = e;
+ 
+
+
+
+
+if (array1 === undefined || array1.length == 0) {
+    // array empty or does not exist
+	document.getElementById("MyReveal").innerHTML ="";
+	//document.getElementById("jump").innerHTML ="No cards in hand";
+}
+
+
+
+} //end of showCard function
+
+
+</script>
+
+
+<div id="myDeck"></div> 
+
+
+
+
+
+
+
+<div  id="handDisplay"></div>
+<div id="myDraw"></div> 
+<div id="MyHand"></div> 
+<div id="MyHand1"></div> 
+
+
+
+
+<h1>Your Deck</h1>
+
+<button onclick="clearCardDisplay()">Clear</button>
+<script>function clearCardDisplay() { document.getElementById("cardDisplay").innerHTML=""; } </script>
+
+<div id="cardDisplay"></div>
+<input type='image' id='450240' width='100' height='150' src='450240.jpg' onclick='show450240();'><script>function show450240(){ document.getElementById('cardDisplay').innerHTML = "<img src='450240.jpg'>"; } </script><!--Gravewaker-->
+<input type='image' id='447223' width='100' height='150' src='447223.jpg' onclick='show447223();'><script>function show447223(){ document.getElementById('cardDisplay').innerHTML = "<img src='447223.jpg'>"; } </script><!--Bogstomper-->
+<input type='image' id='447228' width='100' height='150' src='447228.jpg' onclick='show447228();'><script>function show447228(){ document.getElementById('cardDisplay').innerHTML = "<img src='447228.jpg'>"; } </script><!--Diregraf Ghoul-->
+<input type='image' id='447234' width='100' height='150' src='447234.jpg' onclick='show447234();'><script>function show447234(){ document.getElementById('cardDisplay').innerHTML = "<img src='447234.jpg'>"; } </script><!--Gravedigger-->
+<input type='image' id='447254' width='100' height='150' src='447254.jpg' onclick='show447254();'><script>function show447254(){ document.getElementById('cardDisplay').innerHTML = "<img src='447254.jpg'>"; } </script><!--Skeleton Archer-->
+<input type='image' id='447255' width='100' height='150' src='447255.jpg' onclick='show447255();'><script>function show447255(){ document.getElementById('cardDisplay').innerHTML = "<img src='447255.jpg'>"; } </script><!--Skymarch Bloodletter-->
+<input type='image' id='447261' width='100' height='150' src='447261.jpg' onclick='show447261();'><script>function show447261(){ document.getElementById('cardDisplay').innerHTML = "<img src='447261.jpg'>"; } </script><!--Vampire Sovereign-->
+<input type='image' id='447262' width='100' height='150' src='447262.jpg' onclick='show447262();'><script>function show447262(){ document.getElementById('cardDisplay').innerHTML = "<img src='447262.jpg'>"; } </script><!--Walking Corpse-->
+<input type='image' id='450242' width='100' height='150' src='450242.jpg' onclick='show450242();'><script>function show450242(){ document.getElementById('cardDisplay').innerHTML = "<img src='450242.jpg'>"; } </script><!--Tattered Mummy-->
+<input type='image' id='450259' width='100' height='150' src='450259.jpg' onclick='show450259();'><script>function show450259(){ document.getElementById('cardDisplay').innerHTML = "<img src='450259.jpg'>"; } </script><!--Grasping Scoundrel-->
+<input type='image' id='447241' width='100' height='150' src='447241.jpg' onclick='show447241();'><script>function show447241(){ document.getElementById('cardDisplay').innerHTML = "<img src='447241.jpg'>"; } </script><!--Lich's Caress-->
+<input type='image' id='447256' width='100' height='150' src='447256.jpg' onclick='show447256();'><script>function show447256(){ document.getElementById('cardDisplay').innerHTML = "<img src='447256.jpg'>"; } </script><!--Sovereign's Bite-->
+<input type='image' id='447246' width='100' height='150' src='447246.jpg' onclick='show447246();'><script>function show447246(){ document.getElementById('cardDisplay').innerHTML = "<img src='447246.jpg'>"; } </script><!--Murder-->
+<input type='image' id='447258' width='100' height='150' src='447258.jpg' onclick='show447258();'><script>function show447258(){ document.getElementById('cardDisplay').innerHTML = "<img src='447258.jpg'>"; } </script><!--Strangling Spores-->
+<input type='image' id='447239' width='100' height='150' src='447239.jpg' onclick='show447239();'><script>function show447239(){ document.getElementById('cardDisplay').innerHTML = "<img src='447239.jpg'>"; } </script><!--Infernal Scarring-->
+<input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp-->
+<input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp--><input type='image' id='447406' width='100' height='150' src='447406.jpg' onclick='show447406();'><script>function show447406(){ document.getElementById('cardDisplay').innerHTML = "<img src='447406.jpg'>"; } </script><!--Swamp-->
+
+
+<br>
+
+
+<script>
+//the array
+var x = 0; //x seems like a it's gonna be the index number
+var array = Array(450240, 447223, 447228, 447234, 447254, 447255, 447261, 447262, 450242, 450259, 447241, 447256, 447246, 447258, 447239, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406, 447406); //seems like creating an array object here
+
+
+/*
+function add_element_to_array() //start of function to add-to-array
+{
+ array[x] = document.getElementById("text1").value;
+ x++; 
+ document.getElementById("text1").value = ""; 
+ var e = "<hr/>";
+ for (var y=0; y<array.length; y++)
+   {
+	e += "<img src= '" + array[y] + ".jpg' width='100' height='150'>"  ;
+	
+   }
+   document.getElementById("Result").innerHTML = e;
+}
+*/
+</script>
+<div id="Result"></div> 
+-->
+
+
+
+</body>
+</html>
+
+
