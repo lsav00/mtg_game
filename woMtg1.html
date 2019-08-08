@@ -1,0 +1,48 @@
+<html>
+<body>
+
+<div id="cardDisplay">Hi</div>
+<div id="cardDisplay2">Hello</div>
+
+<script>
+var e="";
+welcomeBlack19 = {"cards":[
+{"multiverseId" : "447406", "quantity" : "13"},
+{"multiverseId" : "450240", "quantity" : "1"}
+]};		
+var cards2=welcomeBlack19.cards;
+for (var i = 0; i < cards2.length; i++) {
+for (var j = 0; j < cards2[i].quantity; j++) {
+e+="<img src='" + cards2[i].multiverseId + ".jpg' width='100' height='150'>";
+}
+//alert("hi");
+
+}
+document.getElementById("cardDisplay2").innerHTML=e;
+//}
+
+/*
+function createNewCard(multiverseId){
+var card = {}; //the empty object
+var num = 0;
+var e="";
+card.display = function(num) {
+alert(multiverseId);
+for (var i = 0; i < num; i++) {
+e+="<img src='" + multiverseId + ".jpg' width='100' height='150'>";
+}
+document.getElementById("cardDisplay").innerHTML=e;
+};
+return card; //returning the object
+}
+
+var swamp = createNewCard('447406');
+swamp.display(13); //run the display function
+*/
+</script>
+
+
+
+
+</body>
+</html>
