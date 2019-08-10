@@ -1,11 +1,15 @@
 # mtg_game
 
 ## Vocabulary
-*deck*: The cards you have collected into a deck
-*library*: the deck shuffled into your library, where you will draw from. The library should display cards upside down
-*draw*: draw means to draw a card from the library and put it in your hand
-*play*: play means to select a card from your hand and place it on the battlefield
-*battlefield*: where played cards are displayed
+**deck**: The cards you have collected into a deck
+
+**library**: the deck shuffled into your library, where you will draw from. The library should display cards upside down
+
+**draw**: draw means to draw a card from the library and put it in your hand
+
+**play**: play means to select a card from your hand and place it on the battlefield
+
+**battlefield**: where played cards are displayed
 
 
 
