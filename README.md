@@ -3,7 +3,9 @@
 ## Vocabulary
 *deck*: The cards you have collected into a deck
 *library*: the deck shuffled into your library, where you will draw from. The library should display cards upside down
-*draw*: draw means to draw a card from the library
+*draw*: draw means to draw a card from the library and put it in your hand
+*play*: play means to select a card from your hand and place it on the battlefield
+*battlefield*: where played cards are displayed
 
 
 
@@ -15,6 +17,7 @@ This version provided system to:
 * click the card in the deck to show it larger in a display area
 * shuffle deck
 * draw a card from the shuffled deck.
+* The drawn cards have a button to play the card onto the battlefield
 
 I ran into an issue with appending the drawn cards into an array. Later, in "woMtg1a" I learned how to append objects to an array
 
