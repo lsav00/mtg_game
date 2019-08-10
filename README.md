@@ -1,11 +1,18 @@
 # mtg_game
 
-## Versions
+## Vocabulary
+*deck*: The cards you have collected into a deck
+*library*: the deck shuffled into your library, where you will draw from. The library should display cards upside down
+*draw*: draw means to draw a card from the library
 
+
+
+## Versions
 
 ### newMtg4a.html
 This version provided system to:
 * print the deck
+* click the card in the deck to show it larger in a display area
 * shuffle deck
 * draw a card from the shuffled deck.
 
