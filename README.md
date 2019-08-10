@@ -13,9 +13,8 @@ I ran into an issue with appending the drawn cards into an array. Later, in "woM
 
 ### woMtg1a
 This version provided a system to:
-* Parse through a JSON file containing the card information
-* Create a JSON object containing card information
-* Grab the multiverseId-key value; the value corresponds with the card image file names
+* Create and parse a JSON object containing card information
+* Grab the multiverseId-key value from the JSON object; the value corresponds with the card image file names
 * Upon loading the page, a function that passes in the cards objects and appends them to an array using push
 * The array is then displayed into a div element by concatenating multiverseId's embedded in an image call
 
