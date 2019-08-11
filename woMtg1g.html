@@ -1,0 +1,161 @@
+<html>
+
+<style>
+input[type=number]{
+    width: 36px;
+} 
+</style>
+
+<script>
+
+welcomeBlack19 = {"cards":[
+{"multiverseId" : "450240", "quantity":1, "land": 0},//Gravewaker
+{"multiverseId" : "447223", "quantity":1, "land": 0},//Bogstomper
+{"multiverseId" : "447228", "quantity":1, "land": 0},//Diregraf Ghoul
+{"multiverseId" : "447234", "quantity":1, "land": 0},//Gravedigger
+{"multiverseId" : "447254", "quantity":1, "land": 0},//Skeleton Archer
+{"multiverseId" : "447255", "quantity":1, "land": 0},//Skymarch Bloodletter
+{"multiverseId" : "447261", "quantity":1, "land": 0},//Vampire Sovereign
+{"multiverseId" : "447262", "quantity":1, "land": 0},//Walking Corpse
+{"multiverseId" : "450242", "quantity":1, "land": 0},//Tattered Mummy
+{"multiverseId" : "450259", "quantity":1, "land": 0},//Grasping Scoundrel
+{"multiverseId" : "447241", "quantity":1, "land": 0},//Lich's Caress
+{"multiverseId" : "447256", "quantity":1, "land": 0},//Sovereign's Bite
+{"multiverseId" : "447246", "quantity":1, "land": 0},//Murder
+{"multiverseId" : "447258", "quantity":1, "land": 0},//Strangling Spores
+{"multiverseId" : "447239", "quantity":1, "land": 0},//Infernal Scarring
+{"multiverseId" : "447406", "quantity":13, "land": 1}//Swamp
+]};		
+
+var cards = welcomeBlack19.cards;
+
+//CREATE A DECK-ARRAY OF THE CARDS
+var deckArray = [];
+function createArray(deck)
+{
+for (var i = 0; i < deck.length; i++){ //for all the objects in deck...
+deckArray.push(deck[i]); //push the object to the deck-array
+}
+
+//DISPLAY THE DECK-ARRAY
+var e="";
+var c=-1;
+for (var j = 0; j < deckArray.length; j++)
+{
+e+="<img src='" + deckArray[j].multiverseId + ".jpg' width='100' height='150'>" + "<input type='number' value='" + deckArray[j].quantity + "' id='" + deckArray[j].multiverseId + "' >";}
+document.getElementById("cardDisplay2").innerHTML=e;
+} 
+
+//SHUFFLE THE DECK-ARRAY
+function shuffle() {
+//make a copy of the deck-Array to reset the new deckArray everytime we shuffle. Otherwise cards keep getting added to the original deck-Array
+libArray=[...deckArray];
+//append the quantities to the deckArray
+//-bring in the quantity (have to do via 'id')
+var n = libArray.length;
+var c=-1;
+for (var j = 0; j < n; j++){
+c++;
+var id= libArray[c].multiverseId;
+var qty = document.getElementById(id).value;
+for (var i = 0; i < qty-1; i++){
+libArray.push(libArray[c]);
+}
+}
+libArray.sort(() => Math.random() - 0.5);
+libArray.sort(() => Math.random() - 0.5);
+libArray.sort(() => Math.random() - 0.5);
+//LIBRARY-DISPLAY 
+var libString = "<hr/>";  
+for (var y=0; y<libArray.length; y++)
+{
+libString += "<img src='" + libArray[y].multiverseId + ".jpg' width='100' height='150'>";
+}
+document.getElementById("libraryDisplay").innerHTML = libString;
+} //END OF SHUFFLE() AREA
+
+//START OF DRAW CARD AREA
+var handString = ""; 
+var handNum = 0; //index number for the hand-array
+var handArray = []; //an empty hand-array
+//Start of the draw function
+function draw(){ 
+//-push library-array index-0 to the new array
+handArray.push(libArray[0]);
+//increment the hand-num (when you play a card, may have to reset this)
+handNum++
+var handString = ""; 
+//-DISPLAY handArray
+document.getElementById("handDisplay").innerHTML="";
+for (var handCount=0; handCount<handArray.length; handCount++)  //for each card in the hand array.. display that card by its multiverseId
+{ 
+handString += "<img src='" + handArray[handCount].multiverseId + ".jpg' width='100' height='150'><button onclick='selectCard(" + handArray[handCount].multiverseId + ", " + handCount + ")'>^</button>"; 
+} //end for statement
+document.getElementById("handDisplay").innerHTML = handString;
+//END OF HANDARRAY DISPLAY
+// shift the first card of the lib-array
+libArray.shift();
+// re-print the shifted library-array
+var libString = "<hr/>";  
+for (var y=0; y<libArray.length; y++)
+{
+libString += "<img src='" + libArray[y].multiverseId + ".jpg' width='100' height='150'>";
+}
+document.getElementById("libraryDisplay").innerHTML = libString;
+} //end of draw()
+
+//START OF SELECT-CARD AREA
+//START OF SELECT-CARD AREA
+function selectCard(selectedId, selectNum){
+//display a card, use the multiverseId
+document.getElementById("selectDisplay").innerHTML="<h2>Your Selected Card</h2><img src='" + selectedId + ".jpg'>";
+document.getElementById("selectPlay").innerHTML="<button onclick=play(" + selectedId + ")>Play</button>";
+selectNum=Number(selectNum);
+//remove the selected card (by its handArray index num) by splicing
+handArray.splice(selectNum, 1);
+}//END OF SELECT() FUNCTION
+
+
+//START OF PLAY-AREA
+function play(playId){
+alert(playId);
+//clear the selectDisplay
+document.getElementById("selectDisplay").innerHTML = "";
+document.getElementById("selectPlay").innerHTML = "";
+}
+
+</script>
+
+
+<body onload = "createArray(cards)" >
+
+<div id="cardDisplay3"></div>
+
+<!--BATTLEFIELD-->
+
+
+
+<!--SELECT AREA-->
+<div id="selectDisplay"></div>
+<div id="selectPlay"></div>
+
+
+<!--HAND AREA-->
+<h2>Your Hand</h2>
+<div id="handDisplay"></div>
+<button onclick="draw()">Draw</button>
+
+
+<!--LIBRARY AREA-->
+<h2>Your Library</h2>
+<div id="libraryDisplay">LibraryDisplay</div>
+<br><br>
+<button onclick="shuffle()">Shuffle</button>
+
+
+<!--DECK AREA-->
+<h2>Your Deck</h2>
+<div id="cardDisplay2">cardDisplay2</div>
+
+</body>
+</html>
