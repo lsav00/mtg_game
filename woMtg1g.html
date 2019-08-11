@@ -122,6 +122,17 @@ alert(playId);
 //clear the selectDisplay
 document.getElementById("selectDisplay").innerHTML = "";
 document.getElementById("selectPlay").innerHTML = "";
+//-DISPLAY handArray
+document.getElementById("handDisplay").innerHTML="";
+newHandString="";
+for (var handCount=0; handCount<handArray.length; handCount++)  //for each card in the hand array.. display that card by its multiverseId
+{ 
+newHandString += "<img src='" + handArray[handCount].multiverseId + ".jpg' width='100' height='150'><button onclick='selectCard(" + handArray[handCount].multiverseId + ", " + handCount + ")'>^</button>"; 
+} //end for statement
+document.getElementById("handDisplay").innerHTML = newHandString;
+//END OF HANDARRAY DISPLAY
+
+
 }
 
 </script>
