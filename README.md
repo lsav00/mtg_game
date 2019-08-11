@@ -11,6 +11,10 @@
 
 **battlefield**: where played cards are displayed
 
+## Functions
+The following version contains the provided function:
+
+* newMtg2cd: alert when user shuffles
 
 
 ## Versions
