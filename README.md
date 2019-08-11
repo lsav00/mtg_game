@@ -14,7 +14,7 @@
 ## Functions
 The following version contains the provided function:
 
-* newMtg2cd: alert when user shuffles
+* newMtg2cd: alert when user shuffles or leaves play
 
 
 ## Versions
