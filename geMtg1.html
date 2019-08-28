@@ -1,0 +1,133 @@
+<html>
+
+<script>
+
+var mydata = [ 
+{"name":"Gravewaker", "multiverseid":"450240", "array":"outline"},
+{"name":"Bogstomper", "multiverseid":"447223", "array":"outline"},
+{"name":"Diregraf Ghoul", "multiverseid":"447228", "array":"outline"},
+{"name":"Gravedigger", "multiverseid":"447234", "array":"outline"},
+{"name":"Skeleton Archer", "multiverseid":"447254", "array":"outline"},
+{"name":"Skymarch Bloodletter", "multiverseid":"447255", "array":"outline"},
+{"name":"Vampire Sovereign", "multiverseid":"447261", "array":"outline"},
+{"name":"Walking Corpse", "multiverseid":"447262", "array":"outline"},
+{"name":"Walking Corpse", "multiverseid":"447262", "array":"outline"},
+{"name":"Tattered Mummy", "multiverseid":"450242", "array":"outline"},
+{"name":"Grasping Scoundrel", "multiverseid":"450259", "array":"outline"},
+{"name":"Lich's Caress", "multiverseid":"447241", "array":"outline"},
+{"name":"Sovereign's Bite", "multiverseid":"447256", "array":"outline"},
+{"name":"Murder", "multiverseid":"447246", "array":"outline"},
+{"name":"Strangling Spores", "multiverseid":"447258", "array":"outline"},
+{"name":"Infernal Scarring", "multiverseid":"447239", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"},
+{"name":"Swamp", "multiverseid":"447406", "array":"outline"}
+]
+
+
+function play(id){
+alert(id);
+}
+
+
+function select(id){
+document.getElementById("selectedDisplay").innerHTML="<img src='" + id + ".jpg'><br><button onclick=\"play('" + id + "')\">Play</button><br><br>";
+}
+
+
+
+function draw(){
+	mydata[0].array = "hand";
+	printit();
+} //end draw()
+
+
+
+function shuffle(){
+	for (var i in mydata) {
+	mydata[i].array = "library";
+	} //end for-mydata
+	mydata.sort(() => Math.random() - 0.5);
+	printit();
+} //end shuffle
+
+
+function printit(){
+	
+	var libString="";
+	var handString="";
+	
+	for (var i in mydata){
+		
+		if (mydata[i].array == "library") {
+				libString += "<img onclick=\"select('" + mydata[i].multiverseid + "')\" src='" + mydata[i].multiverseid + ".jpg'>";	
+		} //end if library
+		
+		if (mydata[i].array == "hand") {
+			handString += "<img onclick=\"select('" + mydata[i].multiverseid + "')\" src='" + mydata[i].multiverseid + ".jpg'>";
+		} //end if-hand
+		
+		
+	} //end for-mydata
+	
+	document.getElementById("libDisplay").innerHTML=libString;
+	document.getElementById("handDisplay").innerHTML=handString;
+	
+} //end printit()
+
+
+
+
+function outline(){
+var outlineString = "";
+var myArray = "";
+for (var i in mydata) {
+if (mydata[i].array == "outline") {
+outlineString += "<img onclick=\"select('" + mydata[i].multiverseid + "')\" src='" + mydata[i].multiverseid + ".jpg'>";
+document.getElementById("mainDisplay").innerHTML=outlineString;
+}//end if-outline
+}//end for-mydata
+}//end out
+
+
+
+function hideDisplay(){
+document.getElementById("mainDisplay").innerHTML="";
+}
+
+
+
+</script>
+
+
+<body>
+
+<button onclick="outline()">View Deck</button>
+<button onclick="shuffle()">Shuffle</button>
+<button onclick="draw()">Draw</button>
+<br>
+<button onclick="hideDisplay()">Clear</button>
+
+<h1>Selected Card</h1>
+<div id="selectedDisplay"></div>
+<h1>Main display</h1>
+<div id="mainDisplay"></div>
+<h1>Hand</h1>
+<div id="handDisplay"></div>
+<h1>Library</h1>
+<div id="libDisplay"></div>
+
+
+</body>
+</html>
+
+
