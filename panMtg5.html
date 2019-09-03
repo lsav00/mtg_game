@@ -1,0 +1,235 @@
+<html>
+
+
+<body>
+<button onclick="printAll('outline', 0)">Edit Deck</button>
+<button onclick="updateQty()">Update</button>
+<button onclick="printAll('shuffle', 0)">Shuffle</button>
+
+
+<button onclick="printAll('draw', 0)">Draw</button>
+
+<div id="playDisplay"></div>
+<div id="preplayDisplay"></div>
+<div id="preplayDisplayButtons"></div>
+
+
+
+<div id="outlineDisplayTitle"></div>
+<div id="outlineDisplay"></div>
+<div id="arrayDisplay"></div>
+<div id="libDisplayTitle"></div>
+<div id="libDisplay"></div>
+
+
+
+<div id="handDisplayTitle"></div>
+<div id="handDisplay"></div>
+
+<div id="graveDisplay"></div>
+</body>
+
+<script>
+var mydata = [
+{"name":"Gravewaker", "multiverseid":"450240", "thing":"outline", "qty":1 },
+{"name":"Bogstomper", "multiverseid":"447223", "thing":"outline", "qty":1},
+{"name":"Diregraf Ghoul", "multiverseid":"447228", "thing":"outline", "qty":1},
+{"name":"Gravedigger", "multiverseid":"447234", "thing":"outline", "qty":1},
+{"name":"Skeleton Archer", "multiverseid":"447254", "thing":"outline", "qty":1},
+{"name":"Skymarch Bloodletter", "multiverseid":"447255", "thing":"outline", "qty":1},
+{"name":"Vampire Sovereign", "multiverseid":"447261", "thing":"outline", "qty":1},
+{"name":"Walking Corpse", "multiverseid":"447262", "thing":"outline", "qty":2},
+{"name":"Tattered Mummy", "multiverseid":"450242", "thing":"outline", "qty":1},
+{"name":"Grasping Scoundrel", "multiverseid":"450259", "thing":"outline", "qty":1},
+{"name":"Lich's Caress", "multiverseid":"447241", "thing":"outline", "qty":1},
+{"name":"Sovereign's Bite", "multiverseid":"447256", "thing":"outline", "qty":1},
+{"name":"Murder", "multiverseid":"447246", "thing":"outline", "qty":1},
+{"name":"Strangling Spores", "multiverseid":"447258", "thing":"outline", "qty":2},
+{"name":"Infernal Scarring", "multiverseid":"447239", "thing":"outline", "qty":1},
+{"name":"Swamp", "multiverseid":"447406", "thing":"outline", "qty":13 }
+]
+
+
+
+var hand=[];
+var play=[];
+var grave=[];
+
+function printAll(arg, num){
+
+	//CREATE ARRAY
+	var mynewdata=[];
+	for (var i in mydata){
+		for (j=1; j<=mydata[i].qty; j++){
+			mynewdata.push(mydata[i]);
+		}//end for mydata qty
+	}//end for mydata
+
+	//PRINT ARRAY
+	var arrayString="";
+	for (var i in mynewdata){
+		arrayString += "<img src= '" + mynewdata[i].multiverseid + ".jpg' width='55' height='85'>";
+	}	
+	
+
+
+	//CREATE OUTLINE 
+	var outlyn="";
+	for (var i in mydata){
+		outlyn+="<input type='number' id='" +mydata[i].multiverseid+ "' value=" + mydata[i].qty + "> " + mydata[i].name + " " + mydata[i].multiverseid + ", <br>";
+	} // end for
+	
+	
+	
+
+
+	//PRINT STRING
+	//PRINT STRING
+	//PRINT STRING
+	
+	if (arg == "outline") {
+		//SHOW TITLE
+		document.getElementById("outlineDisplayTitle").innerHTML="<h1>Edit Deck</h1>";
+		//CLEAR OTHER ARRAYS
+		document.getElementById("libDisplay").innerHTML="";
+		document.getElementById("handDisplay").innerHTML="";
+		//PRINT OUTLINE
+		document.getElementById("outlineDisplay").innerHTML=outlyn;
+		//PRINT ARRAY
+		document.getElementById("arrayDisplay").innerHTML=arrayString;
+		}// end if outline
+
+	if (arg == "shuffle") {
+		//SHOW TITLE
+		document.getElementById("outlineDisplayTitle").innerHTML="<h1>Library</h1>";
+		
+		//CLEAR OTHER DISPLAYS
+		document.getElementById("outlineDisplay").innerHTML="";
+		document.getElementById("arrayDisplay").innerHTML="";
+		document.getElementById("handDisplay").innerHTML="";
+		document.getElementById("handDisplayTitle").innerHTML="";
+		document.getElementById("playDisplay").innerHTML="";
+		document.getElementById("preplayDisplay").innerHTML="";
+		
+		//CLEAR OTHER ARRAYS 
+		hand=[];
+		play=[];
+		
+		//PRINT LIBRARY
+		var library = "";
+		shuffled = mynewdata.sort(() => Math.random() - 0.5);
+		for (var shuffle in shuffled) {
+			library+="<img src='" + shuffled[shuffle].multiverseid + ".jpg' width='55' height='85'>";
+			} //end for
+		document.getElementById("libDisplay").innerHTML=library;
+		}// end if shuffle
+	
+
+	
+	if (arg == "draw") {
+		hand.push(shuffled[0]);
+		shuffled.shift();
+		printAll("hand");
+		
+		}//end if draw
+		
+	
+	
+	if (arg == "hand"){
+		var handy="";
+		for (var i in hand){
+			handy += "<img onclick=\"preplay('" + hand[i].multiverseid + "', " + i + ", 'myhand')\" src='" + hand[i].multiverseid + ".jpg' width='130' height='190'> ";
+		}
+		document.getElementById("outlineDisplay").innerHTML="";
+		document.getElementById("outlineDisplayTitle").innerHTML="";
+		document.getElementById("libDisplay").innerHTML="";
+		document.getElementById("libDisplayTitle").innerHTML="";
+		document.getElementById("arrayDisplay").innerHTML="";  
+		document.getElementById("handDisplayTitle").innerHTML="<h1>Hand</h1>";
+		document.getElementById("handDisplay").innerHTML=handy; 
+	}
+	
+	
+	if (arg == "play") {
+		//CLEAR OTHER DISPLAYS
+		document.getElementById("preplayDisplay").innerHTML="";
+		document.getElementById("preplayDisplayButtons").innerHTML="";
+		var playit="";
+		play.push(hand[num]);
+		for (var ply in play){
+			//playit += "<img src='" +  + ".jpg' width='130' height='190'> ";
+			
+			
+			playit += "<img onclick=\"preplay('" + play[ply].multiverseid + "', " + i + ")\" src='" + play[ply].multiverseid + ".jpg' width='130' height='190'> ";
+			
+			
+			
+		}		
+		document.getElementById("playDisplay").innerHTML=playit;
+		hand.splice(num, 1);
+		printAll("hand");
+	}
+	
+	
+	if (arg == "bury") {
+		var buryit="";
+		alert("bury" + play[num].multiverseid);
+		grave.push(play[num]);
+		for (var grv in grave){
+			buryit += "<img src='" + grave[grv].multiverseid + ".jpg' width='45' height='70'> ";		
+		}		
+		document.getElementById("graveDisplay").innerHTML=buryit;
+		play.splice(num, 1);
+		printAll("play");
+	}
+	
+	
+
+	
+} //end printAll
+
+
+function preplay(id, ptr){
+	//document.getElementById("buttons").innerHTML="";
+	document.getElementById("preplayDisplay").innerHTML="<img src='" + id + ".jpg'>";
+	document.getElementById("preplayDisplayButtons").innerHTML="<button onclick=\"printAll('play', '" + ptr + "')\">Play</button><button onclick=\"printAll('bury', '" + ptr + "')\">Bury</button><button onclick='clearPreplay()'>Clear</button>";
+}
+
+function clearPreplay(){
+document.getElementById("preplayDisplay").innerHTML="";
+}
+
+function updateQty(){
+//var myQty = 0;
+	
+	for (var i in mydata){
+	
+		myQty = document.getElementById(mydata[i].multiverseid).value;
+		mydata[i].qty = myQty;
+
+	}//end for
+
+printAll('outline', 0)
+
+}//end updateQty
+
+
+
+
+/*
+function printLib(){
+var libString="";
+var test="";
+//alert(mynewdata[0].multiverseid);
+for (var i in shuffledLib){
+	test = shuffledLib[i].multiverseid + " " + shuffledLib[i].name;
+	libString += test + "<br>";
+}// end for mynewdata
+document.getElementById("libDisplay").innerHTML=libString;
+}//end printLib
+*/
+
+</script>
+
+</html>
+
