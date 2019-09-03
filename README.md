@@ -14,7 +14,8 @@
 ## Functions
 The following version contains the provided function:
 
-* newMtg2cd: alert when user shuffles or leaves play
+* panMtg5.html: update card quantities
+* newMtg2cd.html: alert when user shuffles or leaves play
 
 
 ## Versions
