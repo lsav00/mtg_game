@@ -14,10 +14,12 @@
 ## Functions
 The following version contains the provided function:
 
-* geMtg5b.html: lots of game functionalities, including tapping
+* geMtg5b.html: lots of game functionalities, including tapping; var Enabled=true;
 * panMtg5.html: update card quantities
 * newMtg2cd.html: alert when user shuffles or leaves play
 
+### var Enabled=true;
+"var Enabled=true;" was used to fix issue with the "select()" card function not printing subsequently-selected cards after a card was already in "selected mode". By requiring Enabled to be true when select was run, I avoided the error by forcing the user to use the selected card before selecting another. Additional user-friendly function would to be to include an "X" or "cancel" button that returns the card to its original location (there's a JSON key for that original location called "previous").
 
 ## Versions
 
