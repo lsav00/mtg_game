@@ -14,6 +14,7 @@
 ## Functions
 The following version contains the provided function:
 
+* geMtg5b.html: lots of game functionalities, including tapping
 * panMtg5.html: update card quantities
 * newMtg2cd.html: alert when user shuffles or leaves play
 
