@@ -1,0 +1,41 @@
+<html>
+
+<script src="jquery.js"></script>
+
+
+
+<body>
+<div id="sicDisplay"></div>
+<button class="collection">Collection</button>
+<button onclick="clearCollection()">Clear</button>
+<div id="outlineDisplay"></div>
+
+<script>
+
+
+$(document).ready(function(){
+  $("button.collection").click(function(){
+    $.getJSON("cmd19c.js", function(result){
+    	document.getElementById("outlineDisplay").innerHTML = ""; //clear outlineDisplay
+    	for (var i = 0; i < result.length; i++){
+    		$('#outlineDisplay').append("<img src='" + result[i].multiverseid + ".jpg'>");
+    	}
+    });
+  });
+});
+
+jQuery(document).ready(function($) {
+	document.getElementById("sicDisplay").innerHTML="js is working";
+});
+
+</script>
+
+<script>
+function clearCollection(){
+document.getElementById("outlineDisplay").innerHTML="";
+}
+</script>
+
+
+</body>
+</html>
