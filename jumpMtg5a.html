@@ -1,0 +1,65 @@
+<html>
+
+<script src="jquery.js"></script>
+
+
+
+<body>
+<div id="sicDisplay"></div>
+
+<!--Buttons-->
+<button class="collection">Collection</button>
+
+<button class="facelessMenace">Faceless Menace</button>
+
+
+<!--clear screen-->
+<button onclick="clearCollection()">Clear</button>
+<script>
+function clearCollection(){
+document.getElementById("outlineDisplay").innerHTML="";
+}
+</script>
+
+
+<!--outline Display-->
+<div id="outlineDisplay"></div>
+
+<script>
+
+//cmd19c.js
+$(document).ready(function(){
+  $("button.collection").click(function(){
+    $.getJSON("cmd19c.js", function(result){
+    	document.getElementById("outlineDisplay").innerHTML = ""; //clear outlineDisplay
+    	for (var i = 0; i < result.length; i++){
+    		$('#outlineDisplay').append("<img src='" + result[i].multiverseid + ".jpg'>");
+    	}
+    });
+  });
+});
+
+
+//fmcd19.js
+$(document).ready(function(){
+  $("button.facelessMenace").click(function(){
+    $.getJSON("fmcd19.js", function(result){
+    	document.getElementById("outlineDisplay").innerHTML = ""; //clear outlineDisplay
+    	for (var i = 0; i < result.length; i++){
+    		$('#outlineDisplay').append("<img src='" + result[i].multiverseid + ".jpg' width='101' height='150' >");
+    	}
+    });
+  });
+});
+
+
+jQuery(document).ready(function($) {
+	document.getElementById("sicDisplay").innerHTML="<h1>Select Deck</h1>js is working";
+});
+
+</script>
+
+
+
+</body>
+</html>
