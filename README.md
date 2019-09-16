@@ -2,8 +2,9 @@
 
 ## Versions
 
-woMtg4b: 
-https://docs.google.com/document/d/1sMlOk0TMnJvY5oHYg4cLns2mIeUA7QflAPtxhN18LyI/edit?usp=sharing
+jumpMtg: https://docs.google.com/document/d/1NWzzxAIT_11KQbuvCjg-kuFrw5Yel2Pqq0ppMk0yfNE/edit?usp=sharing
+
+woMtg: https://docs.google.com/document/d/1sMlOk0TMnJvY5oHYg4cLns2mIeUA7QflAPtxhN18LyI/edit?usp=sharing
 
 ## Vocabulary
 **deck**: The cards you have collected into a deck
