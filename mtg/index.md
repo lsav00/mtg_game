@@ -1,0 +1,367 @@
+<html>
+
+<script type="text/javascript" src="cmd19a.json"></script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+
+h1 {
+  color: black;
+  text-align: center;
+} 
+
+button {
+  color: black;
+  text-align: center;
+} 
+
+
+#playDisplay {
+  background-color: lightblue;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+#playDisplayTapped {
+  background-color: lightblue;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+#landDisplay {
+  background-color: lightblue;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+#landDisplayTapped {
+  background-color: lightblue;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+#handDisplay {
+  background-color: brown;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+#libDisplay {
+  padding: 4px;
+  text-align: center;
+} 
+
+#graveDisplay {
+  padding: 4px;
+  background-color: black;
+  text-align: center;
+} 
+
+#selectedDisplay {
+  background-color: black;
+  color: black;
+  padding: 4px;
+  text-align: center;
+} 
+
+
+.rotate {
+  transform: rotate(45deg);
+}
+
+
+</style>
+
+
+
+
+<script>
+
+
+function play(id){
+	for (var i in mydata){
+		if (mydata[i].array == "selected"){
+			mydata[i].array = "play";
+		} //end if selected
+	} //end for mydata
+	land();
+	printit();
+} //end play()
+
+
+function land(){
+	for (var i in mydata){
+		if (mydata[i].array == "play" && mydata[i].land == 1){
+			mydata[i].array = "land";
+		} //end if play and land
+	}// end for mydata
+}//end land()
+
+
+function hand(id){
+	for (var i in mydata){
+		if (mydata[i].array == "selected"){
+			mydata[i].tap = 0;
+			mydata[i].array = "hand";
+		} //end if multiverseid
+	} //end for mydata
+	printit();
+} //end hand()
+
+
+function bury(id){
+	//scroll(0,100000000000000);
+	for (var i in mydata){
+		if (mydata[i].array == "selected"){
+			var alert = "Player1 buried " + mydata[i].name;
+			mydata[i].array = "grave";
+		} //end if multiverseid
+	} //end for mydata
+	printit(alert);
+} //end buty()
+
+
+function select(myid){
+	scroll(0,0);
+	for (var i in mydata){
+		if (mydata[i].array == "selected"){
+			mydata[i].array = previous;
+		}
+		if (mydata[i].id == myid){
+			mydata[i].array = "selected";
+		} //end if myid
+	} //end for mydata
+	printit();
+} //end select()
+
+
+
+function draw(){
+	for (var i in mydata) {
+		if (mydata[i].array == "library"){
+			mydata[i].array = "hand";
+			mydata[i].previous = "library";
+			{ break; }
+		}//end if-library
+	}//end for-mydata
+	printit();
+} //end draw()
+
+
+
+function shuffle(){
+	for (var i in mydata) {
+		mydata[i].array = "library";
+		mydata[i].previous = "outline";
+	} //end for-mydata
+	mydata.sort(() => Math.random() - 0.5);
+	printit();
+} //end shuffle
+
+
+
+
+function tap(tapid) {
+	for (var i in mydata) {
+		if (mydata[i].id == tapid){
+			mydata[i].tap = 1;
+		} // end if tapid
+	} // end for mydata
+	printit();
+}
+
+function untap(tapid) {
+	for (var i in mydata) {
+		if (mydata[i].id == tapid){
+			mydata[i].tap = 0;
+		} // end if tapid
+	} // end for mydata
+	printit();
+}
+
+
+
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+//PRINT IT //PRINT IT
+
+function printit(alert){
+	
+	var alertString=alert;
+	var libString="";
+	var handString="";
+	var selectedString="";
+	var playString="";
+	var playStringTapped="";
+	var graveString="";
+	var landString="";
+	var landStringTapped="";
+	
+	for (var i in mydata){
+		
+		if (mydata[i].array == "library") {
+				libString += "<img src='" + mydata[i].multiverseid + ".jpg'>";	
+		} //end if library
+		
+		if (mydata[i].array == "hand") { //SELECT
+			handString += "<img onclick=\"select('" + mydata[i].id + "')\" src='" + mydata[i].multiverseid + ".jpg' width='150' height='220' >"; 
+		} //end if-hand
+		
+		if (mydata[i].array == "selected" ) { //PLAY - HAND - BURY - EXILE 
+			selectedString += "<img src='" + mydata[i].multiverseid + ".jpg' width='250' height='350'><br><button onclick=\"play('" + mydata[i].id + "')\">Play</button> <button onclick=\"bury('" + mydata[i].id + "')\">Bury</button> <button onclick=\"hand('" + mydata[i].id + "')\">Hand</button>  <button>Exile</button>";	
+		} // end if-selected
+		
+		
+		
+		
+		//PLAY
+		if (mydata[i].array == "play" && mydata[i].tap == 0) { //TAP
+			playString += "<img onclick=\"select('" + mydata[i].id + "')\"";
+			playString += "src='" + mydata[i].multiverseid + ".jpg'";
+			playString += "width='150' height='220'>";
+			playString += "<button onclick=\"tap('" + mydata[i].id + "')\">T</button>";	
+		} // end if-play not tapped
+		
+		
+		
+		
+		//PLAY TAPPED
+		if (mydata[i].array == "play" && mydata[i].tap == 1) { 
+			playStringTapped += "<img onclick=\"select('" + mydata[i].id + "')\" src='" + mydata[i].multiverseid + ".jpg' class='rotate' width='150' height='220'><button onclick=\"untap('" + mydata[i].id + "')\">U</button>";		
+		} // end if-play tapped
+		
+		
+		
+		//LAND
+		if (mydata[i].array == "land" && mydata[i].tap == 0) {
+			landString += "<img onclick=\"select('" + mydata[i].id + "')\" src='" + mydata[i].multiverseid + ".jpg' width='125' height='165'><button onclick=\"tap('" + mydata[i].id + "')\">T</button>";	
+		} // end if-LAND
+		
+		//LAND TAPPED
+		if (mydata[i].array == "land" && mydata[i].tap == 1) { 
+			landStringTapped += "<img onclick=\"select('" + mydata[i].id + "')\" src='" + mydata[i].multiverseid + ".jpg' class='rotate' width='100' height='125'><button onclick=\"untap('" + mydata[i].id + "')\">U</button>";		
+		} // end if-play tapped
+		
+		
+		
+		//Bury
+		if (mydata[i].array == "grave" ) {
+			graveString += "<img onclick=\"select('" + mydata[i].id + "')\" src='" + mydata[i].multiverseid + ".jpg' width='75' height='100'>";	
+		} // end if-GRAVE
+		
+	} //end for-mydata
+	
+	//document.getElementById("libDisplay").innerHTML=libString;
+	document.getElementById("libDisplay").innerHTML="<img src='back.jpg' width='150' height='200'>";
+	document.getElementById("handDisplay").innerHTML=handString;
+	document.getElementById("selectedDisplay").innerHTML=selectedString;
+	document.getElementById("playDisplay").innerHTML=playString;
+	document.getElementById("playDisplayTapped").innerHTML=playStringTapped;
+	document.getElementById("landDisplay").innerHTML=landString;
+	document.getElementById("landDisplayTapped").innerHTML=landStringTapped;
+	document.getElementById("graveDisplay").innerHTML=graveString;
+	
+	
+} //end printit()
+
+
+
+/*
+function outline(){
+var outlineString = "";
+var myArray = "";
+for (var i in mydata) {
+if (mydata[i].array == "outline") {
+outlineString += "<img onclick=\"select('" + mydata[i].multiverseid + "')\" src='" + mydata[i].multiverseid + ".jpg'>";
+document.getElementById("mainDisplay").innerHTML=outlineString;
+}//end if-outline
+}//end for-mydata
+}//end out
+*/
+
+
+function hideDisplay(){
+document.getElementById("mainDisplay").innerHTML="";
+
+}
+
+
+
+</script>
+
+
+<body>
+
+<div id="selectedDisplay"></div>
+
+<h1>Battlefield</h1>
+<div id="playDisplayTapped"></div>
+<div id="playDisplay"></div>
+
+<div id="landDisplayTapped"></div>
+<div id="landDisplay"></div>
+
+
+
+
+<br>
+<br>
+
+
+
+<!--HAND--><!--HAND-->
+<!--HAND--><!--HAND-->
+<!--HAND--><!--HAND-->
+
+<div id="handDisplay"></div>
+
+<div style="text-align:center;">
+    <button onclick="draw()">Draw</button>
+</div>
+<br><br>
+
+
+
+
+<!--LIBRARY--><!--LIBRARY-->
+<!--LIBRARY--><!--LIBRARY-->
+<!--LIBRARY--><!--LIBRARY-->
+<div id="libDisplay"></div>
+
+
+<div style="text-align:center;">
+	<button onclick="shuffle()">Shuffle</button>
+</div>
+
+
+
+<h1>Graveyard</h1>
+<div id="graveDisplay"></div>
+
+<h1>Exiled</h1>
+<div id="exileDisplay"></div>
+
+
+</body>
+</html>
+
+
