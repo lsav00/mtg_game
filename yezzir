@@ -1,0 +1,6 @@
+create table yezzir ( 
+    id int(32) not null auto_increment,
+	name varchar(255) not null, 
+    jpg varchar(420) not null, 
+    primary key (id)
+);
