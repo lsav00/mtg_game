@@ -24,6 +24,10 @@ Here is the output that goes into the json data file which the website reads to 
 
 ![alt text](screenshots/jsonoutput.jpg "json output with card duplicates")
 
+This is the line in the html file that reads from the json file:
+
+![alt text](screenshots/html_json_read.jpg "html line that imports the json data")
+
 This is the POC for allowing the player to choose any pre-made deck. To summarize the process:
 1. Download the deck json data from mtgjson.com
 2. Copy the deck list (with card quantities) from mtg.gamepdia.com into a txt file.
