@@ -10,6 +10,8 @@ pypyMtg3.py (a json creator) is run by the admin and opens two files: 1) the dec
 
 Still need to add the button/navigation bar to allow the player to actually choose the deck. Also export the json creator output to an actual json file instead of having to copy and paste.
 
+**3. Player can create their own deck**
+
 ## json creator
 
 ### pypyMtg3.py
