@@ -9,7 +9,7 @@ The early versions of the json creator only extracted & processed the relevant f
 
 The latest json creator app is pypyMtg3.py. pypyMtg3.py opens and reads from two files. The first file (a txt file) is the deck list. The deck list is the quantity of each card the deck has. Here is an example:
 
-![alt text](screenshots/ashiokdecklist.jpg "Decklist example")
+![alt text](screenshots/ashiokdecklist2.jpg "Decklist example")
 
 Paste that info into a text file and the result looks like this:
 
