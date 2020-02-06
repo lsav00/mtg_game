@@ -1,5 +1,15 @@
 # mtg_game
 
+## Goals
+
+**1. Cards can "enchant" another card.**
+
+**2. Player can choose any deck**
+
+pypyMtg3.py (a json creator) is run by the admin and opens two files: 1) the deck list with the card quantitied, and 2) the mtgjson file with the card data. The json creator creates the json data file for mtg_game to use for printing and modifying the card location. 
+
+Still need to add the button/navigation bar to allow the player to actually choose the deck. Also export the json creator output to an actual json file instead of having to copy and paste.
+
 ## json creator
 
 ### pypyMtg3.py
@@ -96,8 +106,6 @@ This version provided system to:
 * The drawn cards have a button to play the card onto the battlefield
 
 I ran into an issue with appending the drawn cards into an array. Later, in "woMtg1a" I learned how to append objects to an array
-
-
 
 ## Image from an older version that utitlized mysql & php
 ![alt text](mtgDB.JPG "Description")
