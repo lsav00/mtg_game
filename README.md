@@ -24,7 +24,7 @@ Here is the output that goes into the json data file which the website reads to 
 
 ![alt text](screenshots/jsonoutput.jpg "json output with card duplicates")
 
-This is the line in the html file that reads from the json file:
+This is the line in the html file that reads from the json file (the example is for a json data file named elspeth.json):
 
 ![alt text](screenshots/html_json_read.jpg "html line that imports the json data")
 
