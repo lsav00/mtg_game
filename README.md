@@ -7,7 +7,7 @@ The multiverseid field is actually the scryfallid from the mtgjson file. The mtg
 
 The early versions of the json creator only extracted & processed the relevant fields from the mtgjson file. The early versions did not create json items for duplicate cards in a deck. So if a deck had 10 Islands, the json output would only include 1 Island, because only 1 Island is provided for in the mtgjson file.
 
-The latest json creator app is pypyMtg3.py. pypyMtg3.py opens and reads from two files. The first file (a txt file) is the deck list. The deck list is the quantity of each card the deck has. Here is an example:
+The latest json creator app is pypyMtg3.py. pypyMtg3.py opens and reads from two files. The first file (a txt file) is the deck list. The deck list is the quantity of each card the deck has. I get this quantity info from mtg.gamepedia.com. Here is an example:
 
 ![alt text](screenshots/ashiokdecklist2.jpg "Decklist example")
 
