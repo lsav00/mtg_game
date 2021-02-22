@@ -74,8 +74,6 @@ mysqli_close($conn);
 			<input type="text" name="deckname" id="deckname"/>
 			</br>
 			<label>Password :</label>
-			<input type="password" name="pass" id="pass" />
-			</br>
 			<input type="submit" value="Log in" name="submit" id="submit" />
 			</form>
 							
