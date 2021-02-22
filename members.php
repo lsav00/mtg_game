@@ -5,24 +5,26 @@ if(!isset($_SESSION['username'])){
 
 }
 
-$conn = new mysqli('localhost','lsav','abc123','users');		//CREATE A NEW CONNECTION
-$query = "SELECT * FROM `decks`";					//ASSIGN SELECTED * FROM DECKS TO $QUERY
-$result = mysqli_query($conn,$query);					//ASSIGN THE QUERY TO $RESULT
+$conn = new mysqli('localhost','lsav','abc123','users');				//CREATE A NEW CONNECTION
+$query = "SELECT * FROM `decks`";							//ASSIGN SELECT * FROM DECKS TO $QUERY
+$result = mysqli_query($conn,$query);							//ASSIGN THE QUERY TO $RESULT
 $dname=array();
 
-for ($i=0; $i < 3 && ($row = mysqli_fetch_array($result, MYSQLI_ASSOC));$i++)
+for ($i=0; $i < 100 && ($row = mysqli_fetch_array($result, MYSQLI_ASSOC));$i++)		//FOR EACH ROW
 {		
-	$dname[$i] = "$row[deckname]";				//ASSIGN THE ROW TO CARDNAME
+	$dname[$i] = "$row[deckname]";							//ASSIGN THE ROW TO DNAME
 }
 
 
-$query1 = "SELECT * FROM `narset`";							//ASSIGN SELECTED * FROM NARSET TO $QUERY1
-$result1 = mysqli_query($conn,$query1);							//ASSIGN THE QUERY TO $RESULT1
-$cname=array();
+$query1 = "SELECT * FROM `narset`";							//ASSIGN SELECT * FROM NARSET TO $QUERY1
+$result1 = mysqli_query($conn,$query1);							//ASSIGN $QUERY1 TO $RESULT1
+$cname=array();										//MAKE CNAME AN ARRAY
+$img=array();
 
-for ($j=0; $j < 3 && ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC));$j++)
-{		
-	$cname[$j] = "$row[cardname]";							//ASSIGN THE ROW TO CARDNAME
+for ($j=0; $j < 100 && ($row = mysqli_fetch_array($result1, MYSQLI_ASSOC));$j++)	//FOR EACH ROW IN NARSET
+{						
+	$cname[$j] = "$row[cardname]";							//ASSIGN THE CARDNAME ROW TO CNAME
+	$img[$j] = "$row[img_url]";							//ASSIGN THE IMG_URL ROW TO IMG
 }
 
 
@@ -43,22 +45,32 @@ mysqli_close($conn);
 		</ul>
 		<h1>Members Page</h1>
 
+		
+		<!--WELCOME LINE-->
 		<h3> Welcome <?php echo $_SESSION['username']; ?></h3>
 
+
+		<!--THE DECKS-->
 		<h2>Decks:</h2>
 		
-		<p> <?php echo "$dname[0]"; ?></p>
+		<!--DECK 0-->
+		<p> <?php echo "$dname[0]"; ?></p> <!--NARSET-->
 		<?php 
-			for ($j=0; $j < 3; $j++)
+			for ($j=0; $j < 100; $j++)
 			{
-				echo "$cname[$j], ";
+				echo "<img src='$img[$j]' width='100' height='150'<br>";
 			}
- ?>
+ 		?>
+
+
+
+
+
 
 		
-
+		<!--DECK 1-->
 		<p> <?php echo "$dname[1]"; ?></p>
-		athreos_cards
+		<!--athreos_cards-->
 
 		<p> <?php echo "$dname[2]"; ?></p>
 
@@ -74,6 +86,8 @@ mysqli_close($conn);
 			<input type="text" name="deckname" id="deckname"/>
 			</br>
 			<label>Password :</label>
+			<input type="password" name="pass" id="pass" />
+			</br>
 			<input type="submit" value="Log in" name="submit" id="submit" />
 			</form>
 							
